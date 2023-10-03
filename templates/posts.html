@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    <div class="cards">
+        {% for post in page_obj %}
+        <div class="card">
+            <a href=""><img src="{{ post.image.url }}" alt="{{ post.title }}"></a>
+            <div class="card-contents">
+                <h2 class="card-title"><a href="">{{ post.title }}</a></h2>
+                <p class="card-date">{{ post.date_added|date:'M d, Y' }}</p>
+                <p class="card-desc">{{ post.text| safe |truncatechars:100 }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
