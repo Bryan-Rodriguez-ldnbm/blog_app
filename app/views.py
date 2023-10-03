@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Post
+
 # Create your views here.
 def index(request):
     """Render the home page."""
@@ -7,4 +9,6 @@ def index(request):
 
 def posts(request):
     """Render the blog page."""
-    return
+    posts = Post.objects.order_by('-date_added')
+    context = {'page_obj': posts}
+    return render(request, 'posts.html', context)

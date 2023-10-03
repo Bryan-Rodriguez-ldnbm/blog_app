@@ -8,5 +8,5 @@ app_name = 'app'
 urlpatterns = [
     # Home page
     path('', views.index, name='index'),
-    path('', views.posts, name='posts'),
+    path('posts/', views.posts, name='posts'),
 ]
