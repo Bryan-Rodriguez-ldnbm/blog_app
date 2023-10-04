@@ -32,8 +32,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: black;
-    border: 2px solid black;
+    background-color: rgb(23,23,23);
+    border: 2px solid rgb(23,23,23);
     border-radius: 34px;
     transition: 0.4s;
 }
@@ -97,7 +97,7 @@ body {
 
 .nav-bar {
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 75px;
     display: flex;
     justify-content: center;
 }
@@ -114,6 +114,12 @@ body {
     color: var(--text);
     font-size: xx-large;
     font-weight: bold;
+    transition: border-bottom 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    border-bottom: 2px solid var(--text);
+    
 }
 
 #logo {
@@ -173,4 +179,118 @@ body {
 
 .about-me p {
     font-size: x-large;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.cards {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+}
+
+.cards a {
+    text-decoration: none;
+    color: var(--text);
+}
+
+.card {
+    width: 650px;
+    height: 205px;
+    margin: 20px;
+    background-color: var(--background);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+}
+
+.card img {
+    height: 100%;
+    object-fit: fill;
+    width: 250px;
+}
+
+.card-contents {
+    padding-left: 20px;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+.card-contents h2, p {
+    padding-top: 10px;
+}
+
+.card-date {
+    color: slategray;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post img {
+    padding-top: 20px;
+    height: 500px;
+    width: 750px;
+}
+
+#post-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 760px;
+    max-width: 100%;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.post-date {
+    color: slategray;
+    text-align: right;
+}
+
+.post-content {
+    width: 760px;
+}
+
+.pagination-container {
+    margin-top: auto;
+}
+
+.pagination {
+    position: relative;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.pagination a {
+    color: var(--text);
+    margin: 0;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #333;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: dimgray;
 }
