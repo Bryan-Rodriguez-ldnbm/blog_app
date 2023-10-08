@@ -11,7 +11,7 @@
             <div class="card-contents">
                 <h2 class="card-title">{{ post.title }}</h2>
                 <p class="card-date">{{ post.date_added|date:'M d, Y' }}</p>
-                <p class="card-desc">{{ post.text| safe |truncatechars:100 }}</p>
+                <p class="card-desc">{{ post.text|safe|truncatechars:200 }}</p>
             </div>
         </div>
         </a>

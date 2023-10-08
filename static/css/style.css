@@ -7,6 +7,7 @@
 :root {
     --background: rgb(23,23,23);
     --text: white;
+    --box-shadow: rgb(0,0,0, 0.9);
 }
 
 body {
@@ -96,7 +97,7 @@ body {
 } */
 
 .nav-bar {
-    margin-top: 100px;
+    margin-top: 70px;
     margin-bottom: 75px;
     display: flex;
     justify-content: center;
@@ -128,6 +129,10 @@ body {
 
 #logo img {
     height: 40px;
+}
+
+.portfolio {
+    margin-bottom: 30px;
 }
 
 .profile {
@@ -172,12 +177,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     text-align: center;
-    margin-left: 500px;
-    margin-right: 500px;
 }
 
 .about-me p {
+    max-width: 775px;
     font-size: x-large;
 }
 
@@ -204,20 +209,22 @@ body {
     height: 205px;
     margin: 20px;
     background-color: var(--background);
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 4px var(--box-shadow);
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card img {
-    height: 100%;
-    object-fit: fill;
+    height: auto;
+    max-height: 205px;
     width: 250px;
 }
 
 .card-contents {
     padding-left: 20px;
     padding-right: 5px;
-    padding-top: 5px;
+    padding-top: 3px;
 }
 
 .card-contents h2, p {
@@ -228,25 +235,33 @@ body {
     color: slategray;
 }
 
+.card-desc {
+    padding-top: 0px;
+}
+
 .post {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 100px;
 }
 
 .post img {
-    padding-top: 20px;
-    height: 500px;
-    width: 750px;
+    max-width: 100%;
+    max-height: 500px;
+    width: auto;
+    height: auto;
 }
 
-#post-header {
+.post-header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     width: 760px;
     max-width: 100%;
     text-align: left;
+    padding-top: 15px;
     padding-bottom: 10px;
 }
 
