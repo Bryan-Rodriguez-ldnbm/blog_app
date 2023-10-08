@@ -115,12 +115,22 @@ body {
     color: var(--text);
     font-size: xx-large;
     font-weight: bold;
-    transition: border-bottom 0.3s ease-in-out, color 0.3s ease-in-out;
+    position: relative;
 }
 
-.nav-links a:hover {
-    border-bottom: 2px solid var(--text);
-    
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--text);
+    bottom: -2px;
+    left: 0;
+    transition: width 0.1s ease-in-out;
+}
+
+.nav-links a:hover::before {
+    width: 100%;
 }
 
 #logo {
