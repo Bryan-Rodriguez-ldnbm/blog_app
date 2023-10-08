@@ -226,7 +226,7 @@ body {
 }
 
 .card img {
-    height: auto;
+    height: 205px;
     max-height: 205px;
     width: 250px;
 }
