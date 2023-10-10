@@ -253,7 +253,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
+}
+
+.post-text {
+    padding: 0;
 }
 
 .post img {
@@ -286,6 +290,7 @@ body {
 }
 
 .post-content {
+    font-size: 18px;
     width: 760px;
 }
 
@@ -318,4 +323,44 @@ body {
 
 .pagination a:hover:not(.active) {
     background-color: dimgray;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comments-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 760px;
+    max-width: 100%;
+    text-align: left;
+}
+
+.comments-header p {
+    padding: 0;
+    color: var(--text);
+    font-size: large;
+    font-weight: bold;
+}
+
+.comment-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: large;
+    font-weight: bold;
+}
+
+.post-separator {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    border: 1px solid var(--text);
+    background-color: var(--text);
+    height: 2px;
+    width: 760px;
 }

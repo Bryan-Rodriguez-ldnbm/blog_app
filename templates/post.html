@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="post">
+    {% if post.image %}
     <div class="post-image">
         <img src="{{ post.image.url }}" alt="{{ post.title }}">
     </div>
+    {% endif %}
     <div class="post-header">
         <p class="title">{{ post.title }}</p>
         <p class="post-date">{{ post.date_added|date:'M d, Y' }}</p>
@@ -16,4 +18,5 @@
         {% endif %}
     </div>
 </div>
+{% include 'comments.html' %}
 {% endblock content %}

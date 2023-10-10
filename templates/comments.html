@@ -1,0 +1,22 @@
+<div class="comments-container">
+    <div class="comments-header">
+        <p>Comments</p>
+        <div class="comment-links">
+            <a href="">Register</a> &#x2022;
+            <a href="">Log In</a>
+        </div>
+    </div>
+    <hr class="post-separator">
+    <div class="comment-form">
+        {% csrf_token %}
+
+        <input type="text" name="text" id="comment-text">
+        <button>Post</button>
+    </div>
+    <div class="comments">
+    </div>
+</div>
+<script>
+    const csrf = "{{ csrf_token }}"
+</script>
+<script src="/static/js/form.js"></script>
