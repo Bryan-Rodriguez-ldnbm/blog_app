@@ -18,5 +18,12 @@ class Post(models.Model):
     
 class Comment(models.Model):
     """A comment by a user."""
+    
     date_added = models.DateTimeField(auto_now_add=True)
     text = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name_plural = 'comments'
+
+    def __str__(self):
+        return f"{self.text}"
