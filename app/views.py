@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Post
+from .models import Post, Comment
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 
@@ -26,5 +26,7 @@ def posts(request):
 def post(request, post_id):
     """Render a single post."""
     post = Post.objects.get(id=post_id)
-    context = {'post': post}
+    comments = Comment.objects.order_by('-date_added')
+    context = {'post': post,
+               'comments': comments}
     return render(request, 'post.html', context)

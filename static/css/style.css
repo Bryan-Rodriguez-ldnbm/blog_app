@@ -258,7 +258,7 @@ body {
 }
 
 .post-text {
-    padding: 0;
+    padding: 0px;
 }
 
 .post img {
@@ -291,8 +291,9 @@ body {
 }
 
 .post-content {
-    font-size: 18px;
+    font-size: 17px;
     width: 760px;
+    max-width: 780px;
 }
 
 .pagination-container {
@@ -407,24 +408,26 @@ body {
     margin-top: 10px;
 }
 
+.comment-heading {
+    display: flex;
+    flex-direction: row;
+}
+
 .comment p {
-    padding: 2;
+    padding: 2px;
 }
 
 #user-name {
-    font: large;
+    color: slategray;
+    margin-right: 1px;
+}
+
+#user-comment-date {
+    font-size: small;
     color: slategray;
 }
 
 #user-comment {
-    font: xx-large;
+    font-size: large;
     color: var(--text);
-}
-
-.comment-sep-top {
-    
-}
-
-.comment-sep-bot {
-
 }

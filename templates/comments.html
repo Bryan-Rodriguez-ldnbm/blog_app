@@ -1,3 +1,4 @@
+{% load static %}
 <div class="comment-section">
     <div class="comments-header">
         <p>Comments</p>
@@ -17,12 +18,15 @@
     </div>
     <div class="comments-container">
         <div class="comment">
-            <p id="user-name">Username</p>
-            <p id="user-comment">Yoooo this is pretty goood</p>
+            {% for comment in comments %}
+            <p id="user-name">er880</p>
+            <p id="user-comment-date">{{ comment.date_added|date:'n/j/y' }}</p>
+            <p id="user-comment">{{ comment.text }}</p>
+            {% endfor %}
         </div>
     </div>
 </div>
 <script>
     const csrf = "{{ csrf_token }}"
 </script>
-<script src="/static/js/form.js"></script>
+<script src="{% static 'js/form.js' %}"></script>
