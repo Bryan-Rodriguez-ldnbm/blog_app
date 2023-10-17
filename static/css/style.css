@@ -70,33 +70,6 @@ body {
     border: 2px solid var(--background);
 }
 
-/* .nav-bar {
-    margin-top: 100px;
-    margin-bottom: 120px;
-    margin-left: 500px;
-    margin-right: 500px;
-    display: flex;
-    align-items: center;
-}
-
-#logo {
-    display: flex;
-}
-
-#logo img {
-    padding-right: 500px;
-    height: 40px;
-    width: 100%;
-}
-
-.nav-bar a {
-    margin-left: 15px;
-    text-decoration: none;
-    color: var(--text);
-    font-size: xx-large;
-    font-weight: bold;
-} */
-
 .nav-bar {
     margin-top: 70px;
     margin-bottom: 70px;
@@ -262,7 +235,7 @@ body {
 }
 
 .post img {
-    max-width: 100%;
+    max-width: 760px;
     max-height: 500px;
     width: auto;
     height: auto;
@@ -389,6 +362,7 @@ body {
     background-color: var(--background);
     color: var(--text);
     border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 #post-button:hover {
