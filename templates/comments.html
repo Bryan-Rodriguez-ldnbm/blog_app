@@ -19,8 +19,10 @@
     <div class="comments-container">
         <div class="comment">
             {% for comment in comments %}
-            <p id="user-name">er880</p>
-            <p id="user-comment-date">{{ comment.date_added|date:'n/j/y' }}</p>
+            <div class="comment-heading">
+                <p id="user-name">er880</p>
+                <p id="user-comment-date">@ {{ comment.date_added|date:'n/j/y' }}</p>
+            </div>
             <p id="user-comment">{{ comment.text }}</p>
             {% endfor %}
         </div>

@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
     """Render the home page."""
+
     return render(request, 'index.html', {})
 
 def posts(request):
@@ -25,8 +26,15 @@ def posts(request):
 
 def post(request, post_id):
     """Render a single post."""
+
     post = Post.objects.get(id=post_id)
-    comments = Comment.objects.order_by('-date_added')
+    comments = Comment.objects.filter(post=post).order_by('-date_added')
     context = {'post': post,
                'comments': comments}
+    
     return render(request, 'post.html', context)
+
+def handle_form(request, post_id):
+
+
+    return render(request)
