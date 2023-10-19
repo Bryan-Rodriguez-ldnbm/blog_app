@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 
 from .models import Post, Comment
+from .forms import CommentForm
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 
@@ -10,6 +12,8 @@ def index(request):
     return render(request, 'index.html', {})
 
 def posts(request):
+    """Render a list of posts."""
+
     posts = Post.objects.order_by('-date_added')
     paginator = Paginator(posts, 4)
     page_num = request.GET.get('page')
@@ -28,13 +32,32 @@ def post(request, post_id):
     """Render a single post."""
 
     post = Post.objects.get(id=post_id)
-    comments = Comment.objects.filter(post=post).order_by('-date_added')
+    comments = Comment.objects.filter(post=post).order_by('date_added')
     context = {'post': post,
                'comments': comments}
     
     return render(request, 'post.html', context)
 
-def handle_form(request, post_id):
+def new_comment(request, post_id):
+    """Handle a form to create a user comment."""
 
+    post = get_object_or_404(Post, id=post_id);
 
-    return render(request)
+    if request.method == 'POST':
+        # POST data submitted; process it!
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+            
+            comment_data = {
+                "text": new_comment.text,
+                "date_added": new_comment.date_added.strftime("%n/%j/%y"),
+            }
+
+            return JsonResponse(comment_data, status=200)
+        else:
+            return JsonResponse({"success": False}, status=401)
+    
+    return render('app:post', post_id=post_id)

@@ -17,15 +17,14 @@
         </form>
     </div>
     <div class="comments-container">
+        {% for comment in comments %}
         <div class="comment">
-            {% for comment in comments %}
             <div class="comment-heading">
-                <p id="user-name">er880</p>
-                <p id="user-comment-date">@ {{ comment.date_added|date:'n/j/y' }}</p>
+                <p id="user-comment-date"> {{ comment.date_added|date:'n/j/y' }}</p>
             </div>
             <p id="user-comment">{{ comment.text }}</p>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </div>
 <script>
