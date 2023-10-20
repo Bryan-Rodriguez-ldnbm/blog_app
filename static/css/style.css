@@ -317,6 +317,10 @@ body {
     text-align: left;
 }
 
+#Login-link:hover {
+    color: #333;
+}
+
 .comments-header p {
     padding: 0;
     color: var(--text);

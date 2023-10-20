@@ -32,7 +32,7 @@ def post(request, post_id):
     """Render a single post."""
 
     post = Post.objects.get(id=post_id)
-    comments = Comment.objects.filter(post=post).order_by('date_added')
+    comments = Comment.objects.filter(post=post).order_by('-date_added')
     context = {'post': post,
                'comments': comments}
     
@@ -56,7 +56,7 @@ def new_comment(request, post_id):
                 "date_added": new_comment.date_added.strftime("%n/%j/%y"),
             }
 
-            return JsonResponse(comment_data, status=200)
+            return JsonResponse(comment_data, status=201)
         else:
             return JsonResponse({"success": False}, status=401)
     

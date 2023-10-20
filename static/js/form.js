@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
             mode: 'same-origin'
         })
             .then(function (response) {
-                if (response.statues === 200) {
-                    
+                if (response.status === 201) {
+                    window.location.reload();
                 }
                 else if (response.status === 401) {
                     alert(response.text());
