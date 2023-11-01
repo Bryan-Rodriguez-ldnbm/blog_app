@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const postForm = document.getElementById("comment-form");
+    const commentForm = document.getElementById("comment-form");
     const postURL = window.location.href
     const post_id = postURL.substring(postURL.lastIndexOf('/') + 1);
 
-    postForm.addEventListener("submit", function (event) {
+    commentForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const postData = new FormData(postForm);
+        const commentData = new FormData(commentForm);
 
         fetch("/new_comment/" + post_id, {
             method: "POST",
-            body: postData,
+            body: commentData,
             headers: {
                 "X-CSRFToken": csrf
             },

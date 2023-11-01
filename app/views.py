@@ -50,13 +50,8 @@ def new_comment(request, post_id):
             new_comment = form.save(commit=False)
             new_comment.post = post
             new_comment.save()
-            
-            comment_data = {
-                "text": new_comment.text,
-                "date_added": new_comment.date_added.strftime("%n/%j/%y"),
-            }
 
-            return JsonResponse(comment_data, status=201)
+            return JsonResponse(status=201)
         else:
             return JsonResponse({"success": False}, status=401)
     
