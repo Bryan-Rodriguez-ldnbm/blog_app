@@ -14,5 +14,4 @@ urlpatterns = [
     path('posts/<int:post_id>', views.post, name='post'),
     # Handle forms for comments.
     path('new_comment/<int:post_id>', views.new_comment, name='new_comment'),
-    
 ]
