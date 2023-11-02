@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     commentForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
+        // setup comment payload
         const commentData = new FormData(commentForm);
 
         fetch("/new_comment/" + post_id, {
