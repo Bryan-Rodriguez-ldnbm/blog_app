@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
+    {% if form.errors %}
+        <p>Errors</p>
+    {% endif %}
+
     <div class="login-form">
         <form action="{% url 'accounts:login' %}" method='post'>
             {% csrf_token %}
             
-            {{ form.as_div }}
+            <div class="form-field">
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}
+            </div>
+            <div class="form-field">
+                <label for="{{ form.password.id_for_label }}">Password:</label>
+                {{ form.password }}
+            </div>
 
             <button name="submit">Log In</button>
         </form>
