@@ -43,6 +43,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # My apps
     'app',
+    'accounts',
     'ckeditor',
 
     # Django default apps
