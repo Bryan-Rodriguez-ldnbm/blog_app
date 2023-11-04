@@ -413,19 +413,19 @@ body {
 .login-container {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
 }
 
 .login-form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    text-align: center;
+    justify-content: center;
     border: 1px solid slategray;
     border-radius: 12px;
     box-shadow: 4px 4px 4px var(--box-shadow);
     width: 350px;
     padding-bottom: 20px;
 }
+
 #login-title {
     text-transform: capitalize;
     letter-spacing: 2px;
@@ -446,7 +446,9 @@ body {
     padding-left: 5px;
     padding-bottom: 8px;
     border-radius: 5px;
-    width: 107%;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 90%;
 }
 
 #login-btn {
@@ -459,11 +461,15 @@ body {
 }
 
 #login-btn:hover {
-    background-color: #333;
+    background-color: dimgray;
     cursor: pointer;
 }
 
 #register-link {
     text-decoration: none;
     color: slategray;
+}
+
+#register-msg {
+    margin-bottom: 40px;
 }
