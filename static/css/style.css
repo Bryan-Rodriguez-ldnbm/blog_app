@@ -409,3 +409,61 @@ body {
     font-size: large;
     color: var(--text);
 }
+
+.login-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid slategray;
+    border-radius: 12px;
+    box-shadow: 4px 4px 4px var(--box-shadow);
+    width: 350px;
+    padding-bottom: 20px;
+}
+#login-title {
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    margin-top: 40px;
+    padding: 15px;
+}
+
+#error-msg {
+    color: indianred;
+}
+
+.form-field {
+    padding-bottom: 12px;
+}
+
+.form-field input {
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    width: 107%;
+}
+
+#login-btn {
+    padding: 8px 8px;
+    margin-bottom: 10px;
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#login-btn:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+
+#register-link {
+    text-decoration: none;
+    color: slategray;
+}

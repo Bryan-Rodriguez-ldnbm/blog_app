@@ -2,7 +2,11 @@
     <div class="nav-links">
         <a href="{% url 'app:index' %}">Home</a>
         <a href="{% url 'app:posts' %}">Posts</a>
-        <a href="{% url 'accounts:login' %}">Log In</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'accounts:logout' %}">Log Out</a>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Log In</a>
+        {% endif %}
         <div id="toggle">
             <label class="switch">
                 <input type="checkbox" id="toggleSwitch" checked>
