@@ -52,7 +52,7 @@ def new_comment(request, post_id):
             new_comment.save()
 
             # success
-            return JsonResponse(status=201)
+            return JsonResponse({"success": True}, status=201)
         else:
             return JsonResponse({"success": False}, status=401)
     
