@@ -44,4 +44,6 @@ toggleSwitch.addEventListener("change", () => {
     }
 });
 
-getMode();
+document.addEventListener("DOMContentLoaded", () => {
+    getMode();
+});
