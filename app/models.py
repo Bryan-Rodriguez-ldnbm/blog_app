@@ -18,7 +18,7 @@ class Post(models.Model):
         return f"{self.title}"
     
 class Comment(models.Model):
-    """A comment by a user."""
+    """A comment by a client."""
     
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
