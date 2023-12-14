@@ -1,27 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <div class="login-container">
-        <div class="login-form">
-            <h2 id="login-title">LOGIN</h2>
+    <div class="user-form-container">
+        <div class="user-form">
+            <h2 id="form-title">LOGIN</h2>
             {% if form.errors %}
                 <p id="error-msg">Invalid password or username</p>
             {% endif %}
-            <form action="{% url 'accounts:login' %}" method='post'>
+            <form action="{% url 'accounts:login' %}" method='POST'>
                 {% csrf_token %}
                 
-                <div class="form-field">
-                    <input type="text" name="username" autofocus="" autocapitalize="none" 
-                    placeholder="Username" maxlength="150" required="" id="id_username">
-                </div>
-                <div class="form-field">
-                    <input type="password" name="password" autofocus="" autocapitalize="none" 
-                    placeholder="Password" maxlength="150" required="" id="id_password">
+                <div class="form-fields">
+                    <input type="text" name="username" autofocus autocapitalize="none" 
+                    placeholder="Username" maxlength="12" required id="id_username">
+                    <input type="password" name="password" autofocus autocapitalize="none" 
+                    placeholder="Password" maxlength="150" required id="id_password">
                 </div>
     
-                <button name="submit" id="login-btn">Log In</button>
+                <button name="submit" id="submit-btn">Log In</button>
             </form>
-            <p id="register-msg">Don't have an account? <a href="{% url 'accounts:register' %}" id="register-link">Register</a></p>
+            <p id="form-msg">Don't have an account? <a href="{% url 'accounts:register' %}" id="form-link">Register</a></p>
         </div>
     </div>
 

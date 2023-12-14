@@ -8,7 +8,6 @@
         {% if user.is_authenticated %}
             <form id="comment-form">
                 {% csrf_token %}
-
                 
                 <input type="text" name="text" id="comment-text" placeholder="add comment" maxlength="150" required>
                 <input type="submit" value="Post" id="post-button">
@@ -29,6 +28,6 @@
     </div>
 </div>
 <script>
-    const csrf = "{{ csrf_token }}"
+    const csrf = "{{ csrf_token }}";
 </script>
-<script src="{% static 'js/form.js' %}"></script>
+<script src="{% static 'js/comment.js' %}"></script>

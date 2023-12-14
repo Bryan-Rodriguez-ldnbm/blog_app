@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div class="portfolio">
     <div class="profile">
-        <img src="static/images/default.jpg" alt="default placeholder">
+        <img src="{% static 'images/default.jpg' %}" alt="default placeholder">
     </div>
     <div class="links">
-        <a href="#" id="github"><img src="static/images/github.svg" alt=""></a>
-        <a href="#" id="linkedin"><img src="static/images/linkedin.svg" alt=""></a>
-        <a href="#" id="form"><img src="static/images/rectangle-list-solid.svg" alt=""></a>
+        <a href="#" id="github"><img src="{% static 'images/github.svg' %}" alt="github icon"></a>
+        <a href="#" id="linkedin"><img src="{% static 'images/linkedin.svg' %}" alt="linkedin icon"></a>
+        <a href="#" id="form"><img src="{% static 'images/rectangle-list-solid.svg' %}" alt="list icon"></a>
     </div>
     <div class="about-me">
         <p>

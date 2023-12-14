@@ -72,8 +72,44 @@ body {
     border: 2px solid var(--background);
 }
 
+.user-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.user-links {
+    display: flex;
+    margin-left: 650px;
+}
+
+.user-links a {
+    color: var(--text);
+    text-decoration: none;
+    float: right;
+    margin-left: 25px;
+}
+
+.user-links a:hover {
+    color: var(--hover-fill);
+}
+
+.user-links #gear {
+    background-color: white;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 25px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.user-links #gear:hover {
+    opacity: var(--opacity);
+}
+
 .nav-bar {
-    margin-top: 70px;
+    margin-top: 20px;
     margin-bottom: 70px;
     display: flex;
     justify-content: center;
@@ -82,7 +118,6 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
-    justify-content: right;
 }
 
 .nav-links a {
@@ -417,13 +452,13 @@ body {
     color: var(--text);
 }
 
-.login-container {
+.user-form-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.login-form {
+.user-form {
     text-align: center;
     justify-content: center;
     border-radius: 12px;
@@ -432,7 +467,7 @@ body {
     padding-bottom: 20px;
 }
 
-#login-title {
+#form-title {
     text-transform: capitalize;
     letter-spacing: 2px;
     margin-top: 40px;
@@ -441,23 +476,26 @@ body {
 
 #error-msg {
     color: indianred;
+    padding-top: 0px;
+    padding-bottom: 10px;
 }
 
-.form-field {
-    padding-bottom: 12px;
+.form-fields {
+    padding-bottom: 6px;
 }
 
-.form-field input {
+.form-fields input {
     padding-top: 8px;
     padding-left: 5px;
     padding-bottom: 8px;
     border-radius: 5px;
+    margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
     width: 90%;
 }
 
-#login-btn {
+#submit-btn {
     padding: 8px 8px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -467,16 +505,55 @@ body {
     border-radius: 5px;
 }
 
-#login-btn:hover {
+#submit-btn:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#submit-btn:hover {
     background-color: var(--hover-fill);
     cursor: pointer;
 }
 
-#register-link {
+#form-link {
     text-decoration: none;
     color: slategray;
 }
 
-#register-msg {
+#form-msg {
     margin-bottom: 40px;
+}
+
+.requirements {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.requirements p {
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.invalid {
+    color: lightcoral;
+}
+
+.valid {
+    color: lightgreen;
+}
+
+.tos-msg-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#tos-msg {
+    margin-right: 5px;
+}
+
+#checkbox {
+    margin-left: 5px;
 }
