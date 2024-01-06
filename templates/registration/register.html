@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
     <div class="user-form-container">
@@ -11,22 +12,30 @@
                 {% csrf_token %}
 
                 <div class="form-fields">
+                    <div class="requirements">
+                        <p class="username-error"></p>
+                    </div>
                     <input type="text" name="username" autofocus autocapitalize="none" 
                     placeholder="Username" maxlength="12" required id="id_username">
+                    <div class="email-error"></div>
                     <input type="email" name="email" autofocus autocapitalize="none" 
                     placeholder="Email" maxlength="150" required id="id_email">
                     <input type="password" name="password" autofocus autocapitalize="none" 
                     placeholder="Password" maxlength="150" required id="id_password">
                 </div>
+                <div class="show-password-btn">
+                    <button id="show_password" class="show-password" type="button">Show Password</button>
+                </div>
                 <div class="requirements">
                     <p class="invalid" id="length">Must be minimum 8 characters</p>
-                    <p class="invalid" id="number">Must include a number</p>
+                    <p class="invalid" id="number">Must contain a number</p>
                     <p class="invalid" id="special">Must contain a special character !@#$%^&*()</p>
                     <p class="invalid" id="lower-upper">Must contain both lower and upper case letters</p>
+                    <p class="invalid" id="match">Passwords must match</p>
                 </div>
                 <div class="form-fields">
                     <input type="password" name="password" autofocus autocapitalize="none"
-                    placeholder="Confirm Password" maxlength="150" required id="id_conf_password">
+                    placeholder="Confirm Password" maxlength="150" required id="id_confirm_password">
                 </div>
                 <div class="tos-msg-container">
                     <p id="tos-msg">You agree to the <a href="" id="form-link">Terms and Service</a></p>
@@ -36,4 +45,6 @@
             <p id="form-msg">Already have an account? <a href="{% url 'accounts:login' %}" id="form-link">Login</a></p>
         </div>
     </div>
+
+    <script src="{% static 'js/register.js' %}"></script>
 {% endblock content %}

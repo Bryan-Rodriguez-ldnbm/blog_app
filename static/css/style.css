@@ -524,6 +524,36 @@ body {
     margin-bottom: 40px;
 }
 
+.show-password-btn {
+    margin-left: 10px;
+    text-align: left;
+}
+
+.show-password {
+    transition: opacity .25s;
+    background-color: transparent;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    border: none;
+    padding-left: 10px;
+    font-size: 10px;
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    text-transform: uppercase;
+}
+
+.show-password:hover {
+    color: var(--hover-fill);
+}
+
+.username-error {
+    color: lightcoral;
+}
+
 .requirements {
     display: flex;
     flex-direction: column;
