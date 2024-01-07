@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             requirement.classList.add("valid");
         }
         else {
+            requirement.classList.remove("valid");
             requirement.classList.add("invalid");
         }
     }
@@ -46,7 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
         updateRequirement("length", value.length >= 8);
         updateRequirement("number", /\d/.test(value));
         updateRequirement("special", /[!@#$%^&*()]/.test(value));
-        updateRequirement("lower-upper", );
-        updateRequirement("match", );
+        updateRequirement("lower-upper", /[A-Z]/.test(value) && /[a-z]/.test(value));
+    })
+
+    confirm_password.addEventListener("input", (event) => {
+        const value = event.target.value;
+
+        updateRequirement("match", value.length > 0 && value == password.value);
     })
 });
