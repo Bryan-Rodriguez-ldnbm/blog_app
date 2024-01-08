@@ -554,6 +554,10 @@ body {
     color: lightcoral;
 }
 
+.email-error {
+    color: lightcoral;
+}
+
 .requirements {
     display: flex;
     flex-direction: column;
