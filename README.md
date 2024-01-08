@@ -1,5 +1,5 @@
 # blog_app
-Close to deployment
+Testing in accounts / tests
 # Setup
 1. Create a new folder; call it whatever and put it anywhere.
 2. Open a terminal and cd to that folder and clone this repo into it by using `git clone [this repo]` 
