@@ -41,7 +41,7 @@ def post(request, post_id):
 def new_comment(request, post_id):
     """Handle a form to create a user comment."""
 
-    post = get_object_or_404(Post, id=post_id);
+    post = get_object_or_404(Post, id=post_id)
 
     if request.method == 'POST':
         # POST data submitted; process it!

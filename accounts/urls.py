@@ -12,4 +12,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     # User settings
     path('settings/', views.settings, name='settings'),
+    # Check email
+    path('check_email/', views.check_email, name='check_email'),
 ]

@@ -8,7 +8,7 @@
             {% if form.errors %}
                 <p id="error-msg">Error Registering</p>
             {% endif %}
-            <form action="{% url 'accounts:login' %}" method='POST'>
+            <form action="" method='POST'>
                 {% csrf_token %}
 
                 <div class="form-fields">
@@ -17,7 +17,9 @@
                     </div>
                     <input type="text" name="username" autofocus autocapitalize="none" 
                     placeholder="Username" maxlength="12" required id="id_username">
-                    <div class="email-error"></div>
+                    <div class="requirements">
+                        <p class="email-error"></p>
+                    </div>
                     <input type="email" name="email" autofocus autocapitalize="none" 
                     placeholder="Email" maxlength="150" required id="id_email">
                     <input type="password" name="password" autofocus autocapitalize="none" 
@@ -40,11 +42,14 @@
                 <div class="tos-msg-container">
                     <p id="tos-msg">You agree to the <a href="" id="form-link">Terms and Service</a></p>
                 </div>
-                <button name="submit" id="submit-btn" disabled>Register</button>
+                <button name="submit" id="submit-btn">Register</button>
             </form>
             <p id="form-msg">Already have an account? <a href="{% url 'accounts:login' %}" id="form-link">Login</a></p>
         </div>
     </div>
 
+    <script>
+        const csrf = "{{ csrf_token }}";
+    </script>
     <script src="{% static 'js/register.js' %}"></script>
 {% endblock content %}
