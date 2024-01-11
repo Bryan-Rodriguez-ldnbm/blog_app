@@ -11,13 +11,13 @@
                 {% csrf_token %}
                 
                 <div class="form-fields">
-                    <input type="text" name="username" autofocus autocapitalize="none" 
+                    <input type="text" name="username" autocomplete="username" autofocus autocapitalize="none" 
                     placeholder="Username" maxlength="12" required id="id_username">
-                    <input type="password" name="password" autofocus autocapitalize="none" 
+                    <input type="password" name="password" autocomplete="current-password" autofocus autocapitalize="none" 
                     placeholder="Password" maxlength="150" required id="id_password">
                 </div>
     
-                <button name="submit" id="submit-btn">Log In</button>
+                <button name="login" id="form_btn">Log In</button>
             </form>
             <p id="form-msg">Don't have an account? <a href="{% url 'accounts:register' %}" id="form-link">Register</a></p>
         </div>

@@ -6,9 +6,12 @@
         <div class="user-form">
             <h2 id="form-title">REGISTER</h2>
             {% if form.errors %}
-                <p id="error-msg">Error Registering</p>
+            <p id="error-msg">Error Registering</p>
             {% endif %}
-            <form action="" method='POST'>
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            <form action="{% url 'accounts:register' %}" method='POST' id="register_form">
                 {% csrf_token %}
 
                 <div class="form-fields">
@@ -22,11 +25,11 @@
                     </div>
                     <input type="email" name="email" autofocus autocapitalize="none" 
                     placeholder="Email" maxlength="150" required id="id_email">
-                    <input type="password" name="password" autofocus autocapitalize="none" 
-                    placeholder="Password" maxlength="150" required id="id_password">
+                    <input type="password" name="password1" autofocus autocapitalize="none" 
+                    placeholder="Password" maxlength="150" required id="id_password1">
                 </div>
                 <div class="show-password-btn">
-                    <button id="show_password" class="show-password" type="button">Show Password</button>
+                    <button id="show_password" tabindex="-1" class="show-password" type="button">Show Password</button>
                 </div>
                 <div class="requirements">
                     <p class="invalid" id="length">Must be minimum 8 characters</p>
@@ -36,13 +39,13 @@
                     <p class="invalid" id="match">Passwords must match</p>
                 </div>
                 <div class="form-fields">
-                    <input type="password" name="password" autofocus autocapitalize="none"
-                    placeholder="Confirm Password" maxlength="150" required id="id_confirm_password">
+                    <input type="password" name="password2" autofocus autocapitalize="none"
+                    placeholder="Confirm Password" maxlength="150" required id="id_password2">
                 </div>
                 <div class="tos-msg-container">
-                    <p id="tos-msg">You agree to the <a href="" id="form-link">Terms and Service</a></p>
+                    <p id="tos-msg">You agree to the <a href="" id="form-link" target="_blank">Terms and Service</a></p>
                 </div>
-                <button name="submit" id="submit-btn">Register</button>
+                <button name="register" id="form_btn">Register</button>
             </form>
             <p id="form-msg">Already have an account? <a href="{% url 'accounts:login' %}" id="form-link">Login</a></p>
         </div>

@@ -495,7 +495,7 @@ body {
     width: 90%;
 }
 
-#submit-btn {
+#form_btn {
     padding: 8px 8px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -505,12 +505,12 @@ body {
     border-radius: 5px;
 }
 
-#submit-btn:disabled {
+#form_btn:disabled {
     opacity: 0.5;
     pointer-events: none;
 }
 
-#submit-btn:hover {
+#form_btn:hover {
     background-color: var(--hover-fill);
     cursor: pointer;
 }
@@ -551,10 +551,12 @@ body {
 }
 
 .username-error {
+    display: none;
     color: lightcoral;
 }
 
 .email-error {
+    display: none;
     color: lightcoral;
 }
 

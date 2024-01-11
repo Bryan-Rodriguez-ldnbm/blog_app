@@ -2,30 +2,58 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const username = document.getElementById("id_username");
     const email = document.getElementById("id_email");
-    const password = document.getElementById("id_password");
-    const confirm_password = document.getElementById("id_confirm_password")
+    const password = document.getElementById("id_password1");
+    const confirm_password = document.getElementById("id_password2")
     const show_password = document.getElementById("show_password");
-    const register_btn = document.getElementById("submit-btn");
+    const register_btn = document.getElementById("form_btn");
 
-    const fieldsValid = new Map();
+    const fieldValid = new Map();
 
-    fieldsValid.set("user", false);
-    fieldsValid.set("email", false);
-    fieldsValid.set("length", false);
-    fieldsValid.set("number", false);
-    fieldsValid.set("special", false);
-    fieldsValid.set("lower-upper", false);
-    fieldsValid.set("match", false);
+    fieldValid.set("user", false);
+    fieldValid.set("email", false);
+    fieldValid.set("length", false);
+    fieldValid.set("number", false);
+    fieldValid.set("special", false);
+    fieldValid.set("lower-upper", false);
+    fieldValid.set("match", false);
 
     username.addEventListener("blur", (event) => {
-        if (event.target.value.length > 0 && event.target.value.length < 4) {
+        event.preventDefault();
+
+        const value = event.target.value;
+
+        if (value > 0 && event.target.value.length < 4) {
+            document.querySelector(".username-error").style.display = "block";
             document.querySelector(".username-error").textContent = "Username is too short";
-            fieldsValid.set("user", false)
+            fieldValid.set("user", false)
         }
         else {
+            document.querySelector(".username-error").style.display = "none";
             document.querySelector(".username-error").textContent = "";
-            fieldsValid.set("user", true);
+            fieldValid.set("user", true);
         }
+
+        fetch("/accounts/check_user", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "X-CSRFToken": csrf
+            },
+            body: JSON.stringify({ user: value }),
+            mode: 'same-origin'
+        }).then((response) => {
+            if (response.ok) {
+                fieldValid.set("user", true);
+                document.querySelector(".username-error").style.display = "none";
+                document.querySelector(".username-error").textContent = "";
+            }
+            else {
+                document.querySelector(".username-error").style.display = "block";
+                document.querySelector(".username-error").textContent = "User is taken";
+            }
+        }).catch((error) => {
+            console.error("Error: ", error);
+        });
     });
 
     email.addEventListener("blur", (event) => {
@@ -34,15 +62,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const value = event.target.value;
 
         if (!value) {
-            fieldsValid.set("email", false)
+            fieldValid.set("email", false)
             return;
         }
         if (!(/@/.test(value))) {
+            document.querySelector(".email-error").style.display = "block";
             document.querySelector(".email-error").textContent = "Invalid email";
-            fieldsValid.set("email", false)
+            fieldValid.set("email", false)
             return;
         }
         else {
+            document.querySelector(".email-error").style.display = "none";
             document.querySelector(".email-error").textContent = "";
         }
 
@@ -56,10 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
             mode: 'same-origin'
         }).then((response) => {
             if (response.ok) {
-                fieldsValid.set("email", true);
+                fieldValid.set("email", true);
+                document.querySelector(".email-error").style.display = "none";
                 document.querySelector(".email-error").textContent = "";
             }
             else {
+                document.querySelector(".email-error").style.display = "block";
                 document.querySelector(".email-error").textContent = "Email is taken";
             }
         }).catch((error) => {
@@ -86,12 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (valid) {
             requirement.classList.remove("invalid");
             requirement.classList.add("valid");
-            fieldsValid.set(id, true);
+            fieldValid.set(id, true);
         }
         else {
             requirement.classList.remove("valid");
             requirement.classList.add("invalid");
-            fieldsValid.set(id, false);
+            fieldValid.set(id, false);
         }
     }
 
@@ -113,5 +145,17 @@ document.addEventListener("DOMContentLoaded", () => {
     register_btn.addEventListener("click", (event) => {
         event.preventDefault();
 
+        let valid = true;
+
+        for (const x of fieldValid.values()) {
+            if (x == false) valid = false;
+        }
+
+        if (valid) {
+            document.getElementById("register_form").submit();
+        }
+        else {
+            console.log("Error submitting form");
+        }
     });
 });
