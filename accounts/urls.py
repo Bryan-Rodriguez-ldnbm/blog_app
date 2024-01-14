@@ -14,4 +14,6 @@ urlpatterns = [
     path('settings/', views.settings, name='settings'),
     # Check email
     path('check_email/', views.check_email, name='check_email'),
+    # Check user
+    path('check_user/', views.check_user, name='check_user'),
 ]

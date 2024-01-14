@@ -39,9 +39,9 @@ def check_email(request):
     if email is not None:
         exists = User.objects.filter(email=email).exists()
         if exists:
-            return JsonResponse({"message": "Email is taken"}, status=409)
+            return JsonResponse({"message": "taken"}, status=200)
         else:
-            return JsonResponse({"message": "Email is available"}, status=200)
+            return JsonResponse({"message": "available"}, status=200)
     else:
         return JsonResponse({"message": "bad request"}, status=400)
 
@@ -54,9 +54,9 @@ def check_user(request):
     if username is not None:
         exists = User.objects.filter(username=username).exists()
         if exists:
-            return JsonResponse({"message": "User is taken"}, status=409)
+            return JsonResponse({"message": "taken"}, status=200)
         else:
-            return JsonResponse({"message": "User is available"}, status=200)
+            return JsonResponse({"message": "available"}, status=200)
     else:
         return JsonResponse({"message": "bad request"}, status=400)
         

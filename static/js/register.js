@@ -21,39 +21,46 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
         const value = event.target.value;
-
-        if (value > 0 && event.target.value.length < 4) {
+        if (!value) {
+            document.querySelector(".username-error").style.display = "none";
+            document.querySelector(".username-error").textContent = "";
+            fieldValid.set("email", false)
+        }
+        else if (value.length > 0 && value.length < 4) {
             document.querySelector(".username-error").style.display = "block";
             document.querySelector(".username-error").textContent = "Username is too short";
             fieldValid.set("user", false)
         }
         else {
-            document.querySelector(".username-error").style.display = "none";
-            document.querySelector(".username-error").textContent = "";
-            fieldValid.set("user", true);
+            fetch("/accounts/check_user/", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                    "X-CSRFToken": csrf
+                },
+                body: JSON.stringify({ user: value }),
+                mode: 'same-origin'
+            }).then(response => response.json())
+              .then((data) => {
+                if (data.message === "available") {
+                    document.querySelector(".username-error").style.display = "none";
+                    document.querySelector(".username-error").textContent = "";
+                    fieldValid.set("user", true);
+                }
+                else if (data.message === "taken") {
+                    document.querySelector(".username-error").style.display = "block";
+                    document.querySelector(".username-error").textContent = "User is taken";
+                    fieldValid.set("user", false);
+                }
+                else {
+                    document.querySelector(".username-error").style.display = "none";
+                    document.querySelector(".username-error").textContent = "";
+                    fieldValid.set("user", false);
+                }
+            }).catch((error) => {
+                console.error("Error: ", error);
+            });
         }
-
-        fetch("/accounts/check_user", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-                "X-CSRFToken": csrf
-            },
-            body: JSON.stringify({ user: value }),
-            mode: 'same-origin'
-        }).then((response) => {
-            if (response.ok) {
-                fieldValid.set("user", true);
-                document.querySelector(".username-error").style.display = "none";
-                document.querySelector(".username-error").textContent = "";
-            }
-            else {
-                document.querySelector(".username-error").style.display = "block";
-                document.querySelector(".username-error").textContent = "User is taken";
-            }
-        }).catch((error) => {
-            console.error("Error: ", error);
-        });
     });
 
     email.addEventListener("blur", (event) => {
@@ -62,41 +69,46 @@ document.addEventListener("DOMContentLoaded", () => {
         const value = event.target.value;
 
         if (!value) {
+            document.querySelector(".email-error").style.display = "none";
+            document.querySelector(".email-error").textContent = "";
             fieldValid.set("email", false)
-            return;
         }
-        if (!(/@/.test(value))) {
+        else if (!(/@/.test(value))) {
             document.querySelector(".email-error").style.display = "block";
             document.querySelector(".email-error").textContent = "Invalid email";
             fieldValid.set("email", false)
-            return;
         }
         else {
-            document.querySelector(".email-error").style.display = "none";
-            document.querySelector(".email-error").textContent = "";
+            fetch("/accounts/check_email/", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                    "X-CSRFToken": csrf
+                },
+                body: JSON.stringify({ email: value }),
+                mode: 'same-origin'
+            }).then(response => response.json())
+              .then((data) => {
+                if (data.message === "available") {
+                    document.querySelector(".email-error").style.display = "none";
+                    document.querySelector(".email-error").textContent = "";
+                    fieldValid.set("email", true);
+                }
+                else if (data.message === "taken") {
+                    document.querySelector(".email-error").style.display = "block";
+                    document.querySelector(".email-error").textContent = "Email is taken";
+                    fieldValid.set("email", false);
+                }
+                else {
+                    document.querySelector(".email-error").style.display = "none";
+                    document.querySelector(".email-error").textContent = "";
+                    fieldValid.set("email", false);
+                }
+              })
+            .catch((error) => {
+                console.error("Error: ", error);
+            });   
         }
-
-        fetch("/accounts/check_email/", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-                "X-CSRFToken": csrf
-            },
-            body: JSON.stringify({ email: value }),
-            mode: 'same-origin'
-        }).then((response) => {
-            if (response.ok) {
-                fieldValid.set("email", true);
-                document.querySelector(".email-error").style.display = "none";
-                document.querySelector(".email-error").textContent = "";
-            }
-            else {
-                document.querySelector(".email-error").style.display = "block";
-                document.querySelector(".email-error").textContent = "Email is taken";
-            }
-        }).catch((error) => {
-            console.error("Error: ", error);
-        });
     });
     
     show_password.addEventListener("click", (event) => {
@@ -152,7 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (valid) {
-            document.getElementById("register_form").submit();
+            // document.getElementById("register_form").submit();
+            console.log("Form is valid");
         }
         else {
             console.log("Error submitting form");
