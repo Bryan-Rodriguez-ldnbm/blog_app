@@ -5,15 +5,19 @@
     </div>
     <hr class="post-separator">
     <div class="comment-form-container">
-        {% if user.is_authenticated %}
-            <form id="comment-form">
-                {% csrf_token %}
-                
-                <input type="text" name="text" id="comment-text" placeholder="add comment" maxlength="150" required>
-                <input type="submit" value="Post" id="post-button">
-            </form>
+        {% if post.locked %}
+            <p>Comments locked for this post.</p>
         {% else %}
-            <p>Login to post comments</p>
+            {% if user.is_authenticated %}
+                <form id="comment-form">
+                    {% csrf_token %}
+            
+                    <input type="text" name="text" id="comment-text" placeholder="add comment" maxlength="150" required>
+                    <input type="submit" value="Post" id="post-button">
+                </form>
+            {% else %}
+                <p>Login to post comments</p>
+            {% endif %}
         {% endif %}
     </div>
     <div class="comments-container">

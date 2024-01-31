@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const commentForm = document.getElementById("comment-form");
     const postURL = window.location.href
     const post_id = postURL.substring(postURL.lastIndexOf('/') + 1);
@@ -16,16 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 "X-CSRFToken": csrf
             },
             mode: 'same-origin'
-        })
-            .then(function (response) {
-                if (response.status === 201) {
-                    window.location.reload();
-                }
-                else if (response.status === 401) {
-                    alert(response.text());
-                }
-            }).catch(function (error) {
-                console.error("Error:", error);
-            })
+        }).then(response => response.json())
+          .then((data) => {
+            if (data.success) {
+                window.location.reload();
+            }
+            else {
+                alert(data.text());
+            }
+          })
+        .catch((error) => {
+            console.error(error);
+        });
     });
 });

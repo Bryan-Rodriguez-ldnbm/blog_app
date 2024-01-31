@@ -164,8 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (valid) {
-            // document.getElementById("register_form").submit();
-            console.log("Form is valid");
+            document.getElementById("register_form").submit();
         }
         else {
             console.log("Error submitting form");
