@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
@@ -9,6 +10,7 @@ class Post(models.Model):
     text = RichTextField()
     image = models.ImageField(upload_to='images/', blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    locked = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = 'posts'
