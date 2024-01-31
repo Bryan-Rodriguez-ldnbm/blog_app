@@ -57,3 +57,7 @@ def new_comment(request, post_id):
             return JsonResponse({"success": False}, status=401)
     
     return render('app:post', post_id=post_id)
+
+def tos(request):
+
+    return render(request)
